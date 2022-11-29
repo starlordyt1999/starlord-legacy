@@ -1,0 +1,52 @@
+#	-- Design Name:  Universal Shift Register Design. 
+#	-- Module Name:    usr - Behavioral 
+#
+#					___UCF file___
+#---------------------------------------------------------
+# Name of Designer: Shubham Kulkarni      Roll No.: 404031    
+#---------------------------------------------------------
+
+
+		# clock pin for Basys2 Board
+		
+ NET "clk"  LOC = "B8"; # Bank = 0, Signal name =  CLK
+#NET "uclk" LOC = "M6"; # Bank = 2, Signal name = UCLK
+#NET "mclk" CLOCK_DEDICATED_ROUTE = FALSE;
+#NET "uclk" CLOCK_DEDICATED_ROUTE = FALSE;
+
+
+		# Pin assignment for ___LEDs___
+
+#NET "    " LOC = "G1" ; # Bank = 3, Signal name = LD7
+#NET "    " LOC = "P4" ; # Bank = 2, Signal name = LD6
+#NET "    " LOC = "N4" ; # Bank = 2, Signal name = LD5	
+#NET "    " LOC = "N5" ; # Bank = 2, Signal name = LD4	
+
+ NET "Y<3>" LOC = "G1" ; # Bank = 2, Signal name = LD3	# ___Y<3>
+ NET "Y<2>" LOC = "P4" ; # Bank = 3, Signal name = LD2	# ___Y<2>
+ NET "Y<1>" LOC = "N4" ; # Bank = 2, Signal name = LD1	# ___Y<1>
+ NET "Y<0>" LOC = "N5" ; # Bank = 2, Signal name = LD0	# ___Y<0>
+
+
+		# Pin assignment for ___SWs___
+
+#NET "    " LOC = "N3";  # Bank = 2, Signal name = SW7
+
+ NET "m<1>" LOC = "E2";  # Bank = 3, Signal name = SW6	# ___m<1>
+ NET "m<0>" LOC = "F3";  # Bank = 3, Signal name = SW5	# ___m<0>
+ 
+#NET "    " LOC = "G3";  # Bank = 3, Signal name = SW4
+ 
+ NET "S<3>" LOC = "B4";  # Bank = 3, Signal name = SW3		# ___S<3>
+ NET "S<2>" LOC = "K3";  # Bank = 3, Signal name = SW2		# ___S<2>
+ NET "S<1>" LOC = "L3";  # Bank = 3, Signal name = SW1		# ___S<1>
+ NET "S<0>" LOC = "P11"; # Bank = 2, Signal name = SW0		# ___S<0>
+
+
+		# Pin assignment for ___RESET SWs___
+
+ NET "rst"  LOC = "A7"; # Bank = 1, Signal name = BTN3	# ___rst 	
+#NET "   " LOC = "M4";	# Bank = 0, Signal name = BTN2
+#NET "   " LOC = "C11"; # Bank = 2, Signal name = BTN1		
+#NET "   " LOC = "G12"; # Bank = 0, Signal name = BTN0		
+

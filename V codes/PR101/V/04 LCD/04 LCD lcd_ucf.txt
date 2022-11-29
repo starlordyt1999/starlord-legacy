@@ -1,0 +1,53 @@
+#		-- Design Name:  LCD Interface
+#		-- Module Name:    lcd_sk - Behavioral  
+#
+#				 		___UCF file___
+#------------------------------------------------------------
+# Name of Designer: Shubham Kulkarni      Roll No.:- 404031
+#------------------------------------------------------------
+
+# clock pin for Basys2 Board
+
+ NET "mclk" LOC = "B8"; # Bank = 0, Signal name = MCLK
+#NET "uclk" LOC = "M6"; # Bank = 2, Signal name = UCLK
+#NET "mclk" CLOCK_DEDICATED_ROUTE = FALSE;
+#NET "uclk" CLOCK_DEDICATED_ROUTE = FALSE;
+
+
+			# Pin assignment for ___RESET SWs___
+
+ NET "rst" LOC = "A7";  # Bank = 1, Signal name = BTN3	
+#NET "   " LOC = "M4";	# Bank = 0, Signal name = BTN2
+#NET "   " LOC = "C11"; # Bank = 2, Signal name = BTN1		
+#NET "   " LOC = "G12"; # Bank = 0, Signal name = BTN0		
+
+
+## Loop Back only tested signals   ___connect keypad, lcd___
+
+#NET "PIO<72>" LOC = "B2"  | DRIVE = 2  | PULLUP ; # Bank = 1, Signal name = JA1
+#NET "PIO<73>" LOC = "A3"  | DRIVE = 2  | PULLUP ; # Bank = 1, Signal name = JA2
+#NET "PIO<74>" LOC = "J3"  | DRIVE = 2  | PULLUP ; # Bank = 1, Signal name = JA3
+#NET "PIO<75>" LOC = "B5"  | DRIVE = 2  | PULLUP ; # Bank = 1, Signal name = JA4
+
+ 
+ #		 				___LCD Control___
+
+ NET "lcd_rs" LOC = "C6"  | DRIVE = 2  | PULLUP ; # Bank = 1, Signal name = JB1
+ NET "lcd_rw" LOC = "B6"  | DRIVE = 2  | PULLUP ; # Bank = 1, Signal name = JB2
+ NET "lcd_en" LOC = "C5"  | DRIVE = 2  | PULLUP ; # Bank = 1, Signal name = JB3
+#NET "row<0>" LOC = "B7"  | DRIVE = 2  | PULLUP ; # Bank = 1, Signal name = JB4
+
+ 
+ #	  				  ___LCD Data Lines___
+ 
+ NET "lcd_data<7>" LOC = "A9"  | DRIVE = 2  | PULLUP ; # Bank = 1, Signal name = JC1
+ NET "lcd_data<6>" LOC = "B9"  | DRIVE = 2  | PULLUP ; # Bank = 1, Signal name = JC2
+ NET "lcd_data<5>" LOC = "A10" | DRIVE = 2  | PULLUP ; # Bank = 1, Signal name = JC3
+ NET "lcd_data<4>" LOC = "C9"  | DRIVE = 2  | PULLUP ; # Bank = 1, Signal name = JC4
+
+ NET "lcd_data<3>" LOC = "C12" | DRIVE = 2  | PULLUP ; # Bank = 1, Signal name = JD1
+ NET "lcd_data<2>" LOC = "A13" | DRIVE = 2  | PULLUP ; # Bank = 2, Signal name = JD2
+ NET "lcd_data<1>" LOC = "C13" | DRIVE = 2  | PULLUP ; # Bank = 1, Signal name = JD3
+ NET "lcd_data<0>" LOC = "D12" | DRIVE = 2  | PULLUP ; # Bank = 2, Signal name = JD4
+ 
+ 

@@ -1,0 +1,39 @@
+VERSION 10/9/2017 12:11:23 AM
+FIG #C:\Users\Shubham\Desktop\Microwind Outputs\Inverter C Load.MSK
+BB(189,-57,245,-21)
+SIMU #2.00
+REC(189,-43,24,22,NW)
+REC(202,-37,5,10,DP)
+REC(195,-37,5,10,DP)
+REC(200,-37,2,10,DP)
+REC(195,-54,5,4,DN)
+REC(200,-54,2,4,DN)
+REC(202,-54,5,4,DN)
+REC(196,-30,2,2,CO)
+REC(204,-30,2,2,CO)
+REC(196,-36,2,2,CO)
+REC(204,-53,2,2,CO)
+REC(204,-36,2,2,CO)
+REC(196,-53,2,2,CO)
+REC(200,-57,2,33,PO)
+REC(195,-37,4,14,ME)
+REC(195,-57,4,7,ME)
+REC(203,-54,4,27,ME)
+RLCC 205 -48 210 -48 1 #0.001
+TITLE 205 -45  #Y
+$v 1000 0 
+TITLE 201 -45  #A
+$c 1000 0 0.0900 0.1000 0.1900 0.2000 
+TITLE 197 -56  #Vss
+$0 1000 0 
+TITLE 196 -24  #Vdd
+$1 1000 0 
+TITLE 191 -23  #Vdd
+$1 1000 0 
+TITLE 218 -28  #Roll No :- 404031
+$- 1000 0 
+TITLE 218 -25  #Name : Shubham Kulkarni
+$- 1000 0 
+TITLE 218 -21  #Inverter with C load
+$- 1000 0 
+FFIG C:\Users\Shubham\Desktop\Microwind Outputs\Inverter C Load.MSK

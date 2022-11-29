@@ -1,0 +1,82 @@
+#	 -- Design Name:   Keypad Interface
+#	 -- Module Name:    keypad - Behavioral 
+#
+#				 ___UCF file___
+#------------------------------------------------------------
+# Name of Designer: Shubham Kulkarni      Roll No.:- 404031
+#------------------------------------------------------------
+
+# clock pin for Basys2 Board
+
+ NET "clk"  LOC = "B8"; # Bank = 0, Signal name =  CLK
+#NET "uclk" LOC = "M6"; # Bank = 2, Signal name = UCLK
+#NET "mclk" CLOCK_DEDICATED_ROUTE = FALSE;
+#NET "uclk" CLOCK_DEDICATED_ROUTE = FALSE;
+
+
+			#   ___7seg display___
+
+ NET "display<0>" LOC = "L14"; # Bank = 1, Signal name = CA
+ NET "display<1>" LOC = "H12"; # Bank = 1, Signal name = CB
+ NET "display<2>" LOC = "N14"; # Bank = 1, Signal name = CC
+ NET "display<3>" LOC = "N11"; # Bank = 2, Signal name = CD
+ NET "display<4>" LOC = "P12"; # Bank = 2, Signal name = CE
+ NET "display<5>" LOC = "L13"; # Bank = 1, Signal name = CF
+ NET "display<6>" LOC = "M12"; # Bank = 1, Signal name = CG
+#NET "    dp    " LOC = "N13"; # Bank = 1, Signal name = DP
+
+			# Pin assignment for ___SEG_CTRL___
+
+NET "seg_ctrl<3>" LOC = "K14"; # Bank = 1, Signal name = AN3
+NET "seg_ctrl<2>" LOC = "M13"; # Bank = 1, Signal name = AN2
+NET "seg_ctrl<1>" LOC = "J12"; # Bank = 1, Signal name = AN1
+NET "seg_ctrl<0>" LOC = "F12"; # Bank = 1, Signal name = AN0
+
+			
+			# Pin assignment for ___SWs___
+
+#NET "     " LOC = "N3";  # Bank = 2, Signal name = SW7	
+#NET "     " LOC = "E2";  # Bank = 3, Signal name = SW6	
+ NET "SW<3>" LOC = "F3";  # Bank = 3, Signal name = SW5	
+ NET "SW<2>" LOC = "G3";  # Bank = 3, Signal name = SW4	
+ NET "SW<1>" LOC = "B4";  # Bank = 3, Signal name = SW3	
+ NET "SW<0>" LOC = "K3";  # Bank = 3, Signal name = SW2	
+#NET "     " LOC = "L3";  # Bank = 3, Signal name = SW1		
+#NET "     " LOC = "P11"; # Bank = 2, Signal name = SW0		
+
+			# Pin assignment for ___RESET SWs___
+
+ NET "rst" LOC = "A7";  # Bank = 1, Signal name = BTN3	
+#NET "   " LOC = "M4";	# Bank = 0, Signal name = BTN2
+#NET "   " LOC = "C11"; # Bank = 2, Signal name = BTN1		
+#NET "   " LOC = "G12"; # Bank = 0, Signal name = BTN0		
+
+
+## Loop Back only tested signals   ___connect keypad, lcd___
+
+#NET "PIO<72>" LOC = "B2"  | DRIVE = 2  | PULLUP ; # Bank = 1, Signal name = JA1
+#NET "PIO<73>" LOC = "A3"  | DRIVE = 2  | PULLUP ; # Bank = 1, Signal name = JA2
+#NET "PIO<74>" LOC = "J3"  | DRIVE = 2  | PULLUP ; # Bank = 1, Signal name = JA3
+#NET "PIO<75>" LOC = "B5"  | DRIVE = 2  | PULLUP ; # Bank = 1, Signal name = JA4
+
+ 
+ 
+ #		 				___ROW___
+
+ NET "row<3>" LOC = "C6"  | DRIVE = 2  | PULLUP ; # Bank = 1, Signal name = JB1
+ NET "row<2>" LOC = "B6"  | DRIVE = 2  | PULLUP ; # Bank = 1, Signal name = JB2
+ NET "row<1>" LOC = "C5"  | DRIVE = 2  | PULLUP ; # Bank = 1, Signal name = JB3
+ NET "row<0>" LOC = "B7"  | DRIVE = 2  | PULLUP ; # Bank = 1, Signal name = JB4
+
+ #	  				  ___COLUMN___
+ NET "col<3>" LOC = "A9"  | DRIVE = 2  | PULLUP ; # Bank = 1, Signal name = JC1
+ NET "col<2>" LOC = "B9"  | DRIVE = 2  | PULLUP ; # Bank = 1, Signal name = JC2
+ NET "col<1>" LOC = "A10" | DRIVE = 2  | PULLUP ; # Bank = 1, Signal name = JC3
+ NET "col<0>" LOC = "C9"  | DRIVE = 2  | PULLUP ; # Bank = 1, Signal name = JC4
+
+#
+#NET "PIO<84>" LOC = "C12"  | DRIVE = 2  | PULLUP ; # Bank = 1, Signal name = JD1
+#NET "PIO<85>" LOC = "A13"  | DRIVE = 2  | PULLUP ; # Bank = 2, Signal name = JD2
+#NET "PIO<86>" LOC = "C13"  | DRIVE = 2  | PULLUP ; # Bank = 1, Signal name = JD3
+#NET "PIO<87>" LOC = "D12"  | DRIVE = 2  | PULLUP ; # Bank = 2, Signal name = JD4 
+#

@@ -1,0 +1,5 @@
+ NET "A" LOC = "B4";  # Bank = 3, Signal name = SW3		# ___A<2>
+
+ NET "B" LOC = "K3";  # Bank = 3, Signal name = SW2		# ___A<1>
+ NET "C" LOC = "N5" ; # Bank = 2, Signal name = LD4		# ___Y<3>
+ 

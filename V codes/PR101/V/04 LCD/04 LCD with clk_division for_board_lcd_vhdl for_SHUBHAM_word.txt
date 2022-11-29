@@ -1,0 +1,250 @@
+		-- Design Name:  LCD Interface
+		-- Module Name:    lcd - Behavioral  
+
+---------------------------------------------------------------
+-- Nameof Designer : Shubham Kulkarni      Roll No.:- 404031
+
+-- Date of Design  : 19/09/2017
+-- Date of Verification : 19/09/2017
+-- Date of Testing : 19/09/2017	
+
+---------------------------------------------------------------
+
+library IEEE;
+use IEEE.std_logic_1164.all;
+use IEEE.numeric_std.all;
+use IEEE.std_logic_unsigned.all;
+
+
+entity lcd is
+   Port (  mclk,rst : in  STD_LOGIC;
+			  lcd_data : out STD_LOGIC_VECTOR (7 downto 0);
+			    lcd_rw : out STD_LOGIC;
+             lcd_rs : out STD_LOGIC;
+             lcd_en : out STD_LOGIC);
+ end lcd;
+
+architecture Behavioral of lcd is
+
+	     signal cnt : std_logic_vector(20 downto 0);
+		  signal clk : std_logic;
+		
+		type states is(rst_state,first_cwd,first_cwd1,second_cwd,second_cwd1,
+										 third_cwd,third_cwd1,fourth_cwd,fourth_cwd1,
+							first_char,first_char1,second_char,second_char1,third_char,
+							third_char1,fourth_char,fourth_char1,fifth_char,fifth_char1,
+							sixth_char,sixth_char1,seventh_char,seventh_char1);
+	  
+	  signal p_state,n_state: states;
+
+begin
+
+
+ clk_div : process(mclk,rst)  -- system clk 
+  begin
+
+	if rst = '1' then
+		cnt <= (others => '0');
+
+	elsif mclk'event and mclk = '1' then
+		cnt <= cnt + '1';
+
+			if ( cnt = "011110100001001000000" ) then -- 20bit 50 Hz @  20 msec ~  1M
+				 --  0100110001001011010000000  		   -- 25bit  5 Hz @ 200 msec ~ 10M
+																														
+					clk <= '1';
+					cnt <= (others =>'0');
+						
+			else 
+					clk <= '0';
+         end if;
+	end if;
+ end process;
+
+
+mem_elemt:process(clk,rst)
+ begin
+
+	if rst = '1' then
+		p_state <= rst_state;
+	
+	elsif clk'event and clk = '1' then
+		p_state <= n_state;
+		
+	end if;
+end process;
+
+
+next_state:process(p_state)
+ begin
+
+   case p_state is
+		
+	---------- Sending Commands ----------
+		
+		when rst_state =>								-- send 1st Command
+			
+				lcd_rw <= '0';
+				lcd_rs <= '0';
+				lcd_en <= '0';
+			  n_state <= first_cwd;
+			 lcd_data <= "00111100"; -- 3CH
+
+		when first_cwd =>
+ 
+			   lcd_rw <= '0';
+				lcd_rs <= '0';
+				lcd_en <= '1';
+			  n_state <= first_cwd1;
+			 lcd_data <= "00111100"; -- 3CH___8 bit mode 2 lines 5x8 dots
+
+		when first_cwd1 =>							-- send 2nd Command
+					
+				lcd_rw <= '0';
+				lcd_rs <= '0';
+				lcd_en <= '0';
+			  n_state <= second_cwd;
+			 lcd_data <= "00001100"; -- 0CH
+
+		when second_cwd =>
+ 
+				lcd_rw <= '0';
+				lcd_rs <= '0';
+				lcd_en <= '1';
+			  n_state <= second_cwd1;
+			 lcd_data <= "00001100"; -- 0CH___Display on Cursor off
+
+		when second_cwd1 =>							-- send 3rd Command
+				lcd_rw <= '0';
+				lcd_rs <= '0';
+				lcd_en <= '0';
+			  n_state <= third_cwd;
+		    lcd_data <= "00000001"; -- 01H
+
+		when third_cwd =>
+				lcd_rw <= '0';
+				lcd_rs <= '0';
+				lcd_en <= '1';
+			  n_state <= third_cwd1;
+			 lcd_data <= "00000001"; -- 01H___Clear Display
+
+		when third_cwd1 =>							-- send 4th Command
+				lcd_rw <= '0';
+				lcd_rs <= '0';
+				lcd_en <= '0';
+			  n_state <= fourth_cwd;
+			 lcd_data <= "00000010"; -- 02H
+
+		when fourth_cwd =>
+				lcd_rw <= '0';
+				lcd_rs <= '0';
+				lcd_en <= '1';
+			  n_state <= fourth_cwd1;
+			 lcd_data <= "00000010"; -- 02H___Return Cursor to Home
+
+	---------- Sending Characters ----------
+
+		when fourth_cwd1 =>							-- send 1st Character Data
+				lcd_rw <= '0';
+				lcd_rs <= '1';
+				lcd_en <= '0';
+			  n_state <= first_char;
+			 lcd_data <= "01010011";				-- S
+
+		when first_char =>
+				lcd_rw <= '0';
+				lcd_rs <= '1';
+				lcd_en <= '1';
+			  n_state <= first_char1;
+			 lcd_data <= "01010011";				-- S
+
+		when first_char1 =>							-- send 2nd Character Data
+				lcd_rw <= '0';
+				lcd_rs <= '1';
+				lcd_en <= '0';
+			  n_state <= second_char;
+			 lcd_data <= "01001000"; 				-- H
+
+		when second_char =>
+				lcd_rw <= '0';
+				lcd_rs <= '1';
+				lcd_en <= '1';
+			  n_state <= second_char1;
+			 lcd_data <= "01001000"; 				-- H
+
+		when second_char1 =>							-- send 3rd Character Data
+				lcd_rw <= '0';
+				lcd_rs <= '1';
+				lcd_en <= '0';
+			  n_state <= third_char;
+			 lcd_data <= "01010101"; 				-- U
+
+		when third_char =>
+				lcd_rw <= '0';
+				lcd_rs <= '1';
+				lcd_en <= '1';
+			  n_state <= third_char1;
+			 lcd_data <= "01010101"; 				-- U
+
+		when third_char1 =>							-- send 4th Character Data
+				lcd_rw <= '0';
+				lcd_rs <= '1';
+				lcd_en <= '0';
+			  n_state <= fourth_char;
+			 lcd_data <= "01000010"; 				-- B
+
+		when fourth_char =>
+				lcd_rw <= '0';
+				lcd_rs <= '1';
+				lcd_en <= '1';
+			  n_state <= fourth_char1;
+			 lcd_data <= "01000010";				-- B
+
+		when fourth_char1 =>							-- send 5th Character Data
+				lcd_rw <= '0';
+				lcd_rs <= '1';
+				lcd_en <= '0';
+			  n_state <= fifth_char;
+			 lcd_data <= "01001000"; 				-- H
+
+		when fifth_char =>
+				lcd_rw <= '0';
+				lcd_rs <= '1';
+				lcd_en <= '1';
+			  n_state <= fifth_char1;
+			 lcd_data <= "01001000"; 				-- H
+
+		when fifth_char1 =>							-- send 6th Character Data
+				lcd_rw <= '0';			
+				lcd_rs <= '1';
+				lcd_en <= '0';
+			  n_state <= sixth_char;
+			 lcd_data <= "01000001"; 				-- A
+
+		when sixth_char =>
+				lcd_rw <= '0';
+				lcd_rs <= '1';
+				lcd_en <= '1';
+			  n_state <= sixth_char1;
+			 lcd_data <= "01000001"; 				-- A
+
+		when sixth_char1 =>							-- send 7th Character Data
+				lcd_rw <= '0';
+				lcd_rs <= '1';
+				lcd_en <= '0';
+			  n_state <= seventh_char;
+			 lcd_data <= "01001101"; 				-- M
+
+		when seventh_char =>
+				lcd_rw <= '0';
+				lcd_rs <= '1';
+				lcd_en <= '1';
+			  n_state <= seventh_char1;
+			 lcd_data <= "01001101"; 				-- M
+
+		when others =>
+			NULL;
+
+   end case;
+ end process;
+end Behavioral;

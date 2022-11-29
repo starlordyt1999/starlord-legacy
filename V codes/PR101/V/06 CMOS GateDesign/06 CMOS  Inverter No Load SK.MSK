@@ -1,0 +1,36 @@
+VERSION 10/2/2017 3:36:13 AM
+FIG #C:\Users\Shubham\Desktop\Microwind Outputs\Inverter No Laod SK.MSK
+BB(-19,42,18,82)
+SIMU #5.00
+REC(-19,60,24,22,NW)
+REC(-6,66,5,10,DP)
+REC(-13,66,5,10,DP)
+REC(-8,66,2,10,DP)
+REC(-13,46,5,4,DN)
+REC(-8,46,2,4,DN)
+REC(-6,46,5,4,DN)
+REC(-4,73,2,2,CO)
+REC(-12,67,2,2,CO)
+REC(-12,73,2,2,CO)
+REC(-12,47,2,2,CO)
+REC(-4,47,2,2,CO)
+REC(-4,67,2,2,CO)
+REC(-8,43,2,36,PO)
+REC(-13,66,4,14,ME)
+REC(-13,42,4,8,ME)
+REC(-5,46,4,30,ME)
+TITLE 16 79  #Name : Shubham Kulkarni
+$- 1000 0 
+TITLE -11 79  #Vdd
+$1 1000 0 
+TITLE -17 79  #Vdd
+$1 1000 0 
+TITLE -7 55  #i/p
+$c 1000 0 0.3900 0.4000 0.7900 0.8000 
+TITLE -3 52  #o/p
+$v 1000 0 
+TITLE -12 43  #Vss
+$0 1000 0 
+TITLE 18 77  #Roll No. :- 404031
+$- 1000 0 
+FFIG C:\Users\Shubham\Desktop\Microwind Outputs\Inverter No Laod SK.MSK
