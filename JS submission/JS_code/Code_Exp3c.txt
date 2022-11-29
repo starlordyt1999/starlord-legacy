@@ -1,0 +1,19 @@
+//Experiment 3: function checking string is palindrome or not
+function is_palindrome( str )
+{
+	reverse_str = reverse(str);
+	// condition checking if reverse str is
+	// same as string it is palindrome
+	// else not a palindrome
+	if( reverse_str === str)
+	{
+	console.log("passed string is palindrome ");
+	}
+	else
+	{
+	console.log("passed string is not palindrome")
+	}
+}
+let test = "hellolleh";
+is_palindrome(test);
+

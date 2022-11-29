@@ -1,0 +1,49 @@
+//Experiment 3a. Write a program to reverse a string
+
+function reverseString(str) {
+
+    // empty string
+    let newString = "";
+    for (let i = str.length - 1; i >= 0; i--) {
+        newString += str[i];
+    }
+    return newString;
+}
+
+// take input from the user
+const string = prompt('Enter a string: ');
+
+const result = reverseString(string);
+console.log(result);
+
+2nd 
+// Experiment 3b. Program to replace a character of a string
+
+const string = 'Mr Red has a red house and a red car';
+
+// replace the characters
+const newText = string.replace('red', 'blue');
+
+// display the result
+console.log(newText);
+
+3rd
+//Experiment 3: function checking string is palindrome or not
+function is_palindrome( str )
+{
+	reverse_str = reverse(str);
+	// condition checking if reverse str is
+	// same as string it is palindrome
+	// else not a palindrome
+	if( reverse_str === str)
+	{
+	console.log("passed string is palindrome ");
+	}
+	else
+	{
+	console.log("passed string is not palindrome")
+	}
+}
+let test = "hellolleh";
+is_palindrome(test);
+
